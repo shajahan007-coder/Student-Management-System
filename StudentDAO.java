@@ -5,8 +5,8 @@ import java.util.List;
 public class StudentDAO {
 
     private final String jdbcURL = "jdbc:mysql://localhost:3306/student_db?useSSL=false&serverTimezone=UTC";
-    private final String jdbcUsername = "root";
-    private final String jdbcPassword = "shahamysql404error";
+    private final String jdbcUsername = "your root name";
+    private final String jdbcPassword = "your root password";
 
     // 1️⃣ Get a database connection
     private Connection getConnection() throws SQLException {
@@ -102,3 +102,4 @@ public class StudentDAO {
         }
     }
 }
+
