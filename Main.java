@@ -1,4 +1,3 @@
-
 import java.util.*;
 
 public class Main {
@@ -28,8 +27,15 @@ public class Main {
                         String email = sc.nextLine();
                         System.out.print("Enter Course: ");
                         String course = sc.nextLine();
-                        dao.addStudent(new Student(name, email, course));
+                        System.out.print("Enter Roll Number: ");
+                        String roll = sc.nextLine();
+                        System.out.print("Enter Section: ");
+                        String section = sc.nextLine();
+
+                        dao.addStudent(new Student(0, name, email, course, roll, section));
+                        System.out.println("✅ Student added successfully!");
                     }
+
                     case 2 -> {
                         List<Student> students = dao.getAllStudents();
 
@@ -37,18 +43,19 @@ public class Main {
                             System.out.println("No students found.");
                         } else {
                             // Print header
-                            System.out.println("+----+----------------+-------------------------+----------------+");
-                            System.out.printf("| %-2s | %-14s | %-23s | %-14s |\n", "ID", "Name", "Email", "Course");
-                            System.out.println("+----+----------------+-------------------------+----------------+");
+                            System.out.println("+----+-----------------------+-----------------------+------------+-------------+--------+");
+                            System.out.printf("| %-2s | %-21s | %-21s | %-10s | %-11s | %-6s |\n",
+                                    "ID", "Name", "Email", "Course", "Roll No", "Section");
+                            System.out.println("+----+-----------------------+-----------------------+------------+-------------+--------+");
 
                             // Print each student
                             for (Student s : students) {
-                                System.out.printf("| %-2d | %-14s | %-23s | %-14s |\n",
-                                        s.getId(), s.getName(), s.getEmail(), s.getCourse());
+                                System.out.printf("| %-2d | %-21s | %-21s | %-10s | %-11s | %-6s |\n",
+                                        s.getId(), s.getName(), s.getEmail(), s.getCourse(), s.getRollNumber(), s.getSection());
                             }
 
                             // Print footer
-                            System.out.println("+----+----------------+-------------------------+----------------+");
+                            System.out.println("+----+-----------------------+-----------------------+------------+-------------+--------+");
                         }
                     }
 
@@ -62,13 +69,21 @@ public class Main {
                         String newEmail = sc.nextLine();
                         System.out.print("Enter New Course: ");
                         String newCourse = sc.nextLine();
-                        dao.updateStudent(new Student(idU, newName, newEmail, newCourse));
+                        System.out.print("Enter New Roll Number: ");
+                        String newRoll = sc.nextLine();
+                        System.out.print("Enter New Section: ");
+                        String newSection = sc.nextLine();
+
+                        dao.updateStudent(new Student(idU, newName, newEmail, newCourse, newRoll, newSection));
+                        System.out.println("✅ Student updated successfully!");
                     }
+
                     case 4 -> {
                         System.out.print("Enter ID to delete: ");
                         int idD = sc.nextInt();
                         dao.deleteStudent(idD);
                     }
+
                     case 5 ->
                         System.out.println("Exiting...");
                     default ->
@@ -79,3 +94,4 @@ public class Main {
         }
     }
 }
+
