@@ -4,7 +4,8 @@ import java.util.List;
 
 public class StudentDAO {
 
-    private final String jdbcURL = "jdbc:mysql://localhost:3306/student_db?useSSL=false&serverTimezone=UTC";
+  private final String jdbcURL = 
+    "jdbc:mysql://localhost:3306/student_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
     private final String jdbcUsername = "your root name";
     private final String jdbcPassword = "your root password";
 
@@ -102,4 +103,5 @@ public class StudentDAO {
         }
     }
 }
+
 
